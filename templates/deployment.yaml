@@ -37,10 +37,20 @@ spec:
               containerPort: 443
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
             httpGet:
               path: /
               port: http
           readinessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
             httpGet:
               path: /
               port: http
