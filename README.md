@@ -1,2 +1,1 @@
-# ranchear-helm-chart
 # rancherchart
