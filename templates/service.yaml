@@ -10,9 +10,11 @@ spec:
     - port: {{ .Values.service.portHttp }}
       targetPort: http
       protocol: TCP
+      name: http
     - port: {{ .Values.service.portHttps }}
       targetPort: https
       protocol: TCP
+      name: https
   selector:
     app.kubernetes.io/name: {{ include "rancherchart.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
