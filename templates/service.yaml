@@ -8,11 +8,10 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.portHttp }}
-      targetPort: 80
+      targetPort: http
       protocol: TCP
-      name: http
     - port: {{ .Values.service.portHttps }}
-      targetPort: 443
+      targetPort: https
       protocol: TCP
   selector:
     app.kubernetes.io/name: {{ include "rancherchart.name" . }}
