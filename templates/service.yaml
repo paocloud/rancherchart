@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "rancherchart.fullname" . }}
+  labels:
+{{ include "rancherchart.labels" . | indent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.portHttp }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: {{ .Values.service.portHttps }}
+      targetPort: https
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: {{ include "rancherchart.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
